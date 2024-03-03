@@ -1,0 +1,28 @@
+:root{
+    --Main-BG-Colour: #1f1f1f;
+    --Secondary-BG-Colour: #202020;
+    --Primary-Colour: #1f0e47;
+    --Secondary-Colour: #2f1272;
+    --Primary-Text-Colour: #c7c7c7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    color: var(--Primary-Text-Colour);
+    padding: 0;
+    margin: 0;
+}
+
+.AButton{
+    padding: 20px 50px 20px 50px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--Primary-Text-Colour);
+}
+
+.Main-Gradient{
+    background: linear-gradient(to right, var(--Primary-Colour), #6141ac);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
