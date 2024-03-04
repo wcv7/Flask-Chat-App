@@ -10,14 +10,14 @@
     <body>
         <div class="Main-Container">
             <div class="Auth-Container">
-                <div class="Start-Container Show">
+                <div class="Start-Container Hidden">
                     <h1 class="Main-Gradient">Night</h1>
                     <p>The All In One App</p>
                     <a href="#/Login" class="Login-Btn AButton">Login</a>
                     <a href="#/SignUp" class="SignUp-Btn AButton">Sign Up</a>
                 </div>
                 <div class="Login-Container Hidden">
-                    <form action="POST">
+                    <form action="/Auth/Login" method="POST">
                         <a href="" class="Login-BackBtn AButton"><</a>
                         <h1 class="Main-Gradient">Night</h1>
                         <h2>Username</h2>
@@ -27,7 +27,27 @@
                         <a class="Login-LoginBtn AButton">Login</a>
                     </form>
                 </div>
-                <div class="SignUp-Container Hidden"></div>
+                <div class="SignUp-Container Show">
+                    <form action="/Auth/SignUp" method="POST">
+                        <a href="" class="Login-BackBtn AButton"><</a>
+                        <h1 class="Main-Gradient">Night</h1>
+                        <div class="NamesDiv">
+                            <h2>Firstname</h2>
+                            <h2>Lastname</h2>
+                            <h2>Username</h2>
+                            <h2>Email</h2>
+                            <h2>Password</h2>
+                        </div>
+                        <div class="InputsDiv">
+                            <input type="text" placeholder="Firstname" name="Firstname">
+                            <input type="text" placeholder="Lastname" name="Lastname">
+                            <input type="text" placeholder="Username" name="Username">
+                            <input type="email" placeholder="Email" name="Email">
+                            <input type="password" placeholder="Password" name="Password">
+                        </div>
+                        <input type="submit" class="SignUp-SignUpBtn AButton"></input>
+                    </form>
+                </div>
             </div>
         </div>
         <script src="static/JS/Auth.js"></script>

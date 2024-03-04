@@ -10,14 +10,19 @@
 
 .Auth-Container{
     position: relative;
-    height: 60%;
-    width: 60%;
+    height: 75%;
+    width: 70%;
     background-color: rgb(12, 12, 12);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
     overflow: hidden;
+}
+
+.Auth-Container input{
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .Start-Container{
@@ -141,6 +146,80 @@
     font-weight: 600;
 }
 
+.SignUp-Container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.SignUp-Container form{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.SignUp-Container h1{
+    position: absolute;
+    top: 0%;
+}
+
+.SignUp-Container h2{
+    margin: 12px 10px 25px 0px;
+}
+
+.SignUp-Container .NamesDiv{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+}
+
+.SignUp-Container .InputsDiv{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+}
+
+.SignUp-Container input{
+    margin: 0px 0px 10px 0px;
+    width: 80%;
+    height: 7%;
+    border-radius: 15px;
+}
+
+.SignUp-SignUpBtn{
+    position: absolute;
+    width: 0px!important;
+    padding: 20px 20% 40px 15%!important;
+    background-color: var(--Primary-Colour);
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    bottom: 10%;
+}
+
+.SignUp-Container.Show{
+    position: absolute;
+    animation-name: SlideToContainer;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    right: 0%;
+}
 
 @media only screen and (max-width: 600px) {
     .Auth-Container {

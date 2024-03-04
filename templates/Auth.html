@@ -24,7 +24,27 @@
                     <input type="submit" class="Login-LoginBtn AButton"></input>
                 </form>
             </div>
-            <div class="SignUp-Container {{SignUpStatus}}"></div>
+            <div class="SignUp-Container {{SignUpStatus}}">
+                <form action="/Auth/SignUp" method="POST">
+                    <a href="Return" class="Login-BackBtn AButton"><</a>
+                    <h1 class="Main-Gradient">Night</h1>
+                    <div class="NamesDiv">
+                        <h2>Firstname</h2>
+                        <h2>Lastname</h2>
+                        <h2>Username</h2>
+                        <h2>Email</h2>
+                        <h2>Password</h2>
+                    </div>
+                    <div class="InputsDiv">
+                        <input type="text" placeholder="Firstname" name="Firstname">
+                        <input type="text" placeholder="Lastname" name="Lastname">
+                        <input type="text" placeholder="Username" name="Username">
+                        <input type="email" placeholder="Email" name="Email">
+                        <input type="password" placeholder="Password" name="Password">
+                    </div>
+                    <input type="submit" class="SignUp-SignUpBtn AButton"></input>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

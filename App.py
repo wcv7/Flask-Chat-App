@@ -43,8 +43,25 @@ def AuthLogin():
             return redirect("/")
     return render_template("Auth.html", HiddenStatus="Hidden", SignUpStatus="LogHidden", LoginStatus="Show")
 
-@app.route("/Auth/SignUp")
+@app.route("/Auth/SignUp", methods=['GET', 'POST'])
 def AuthSignUp():
+    if request.method == "POST":
+        FName = request.form['Firstname']
+        LName = request.form['Lastname']
+        Username = request.form['Username']
+        Email = request.form['Email']
+        Password = request.form['Password']
+        print(FName, LName, Username, Email, Password)
+        if LocalServer.CreateAccount(FName, LName, Username, Email, Password):
+            print(":)")
+            resp = make_response(redirect("/"))
+            resp.set_cookie('Username', Username)
+            resp.set_cookie("Password", Password)
+            print("Success")
+            return resp
+        else:
+            print("Redirecting")
+            return redirect("/")
     return render_template("Auth.html", HiddenStatus="Hidden", LoginStatus="SignHidden", SignUpStatus="Show")
 
 @app.route("/Auth/Return")
