@@ -28,7 +28,7 @@ def AuthLogin():
     if request.method == "POST":
         Username = request.form['Username']
         Password = request.form['Password']
-        if LocalServer.CheckPassword(Password, Username):
+        if LocalServer.Login(Username, Password):
             resp = make_response(redirect("/"))
             resp.set_cookie('Username', Username)
             resp.set_cookie('Password', Password)

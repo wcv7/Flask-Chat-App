@@ -33,7 +33,6 @@ class Server():
                     """
                 cursor.execute(sql, Values)
                 result, = cursor.fetchone()
-                print(result)
                 if result == Password:
                     return True
                 else:
@@ -41,14 +40,14 @@ class Server():
         except:
             return False
         
-    def FindUserID(Field):
+    def FindUserID(self, Field):
         try:
             Values = (Field, Field)
             with sqlite3.connect("./Backend/Data.db") as db:
                 cursor = db.cursor()
                 sql = """SELECT UserID FROM User
                         WHERE Username = ? OR Email = ?;
-                    """
+                     """
                 cursor.execute(sql, Values)
                 result, = cursor.fetchone()
                 return result
@@ -75,7 +74,6 @@ class Server():
             return False
 
     def Login(self, Username, Password):
-        Values = (Username, Password)
         UserID = self.FindUserID(Username)
         if UserID != False:
             if self.CheckPassword(Password, Username):
