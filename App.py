@@ -9,7 +9,6 @@ LocalServer = Handler.Data.Server()
 def Main():
     Username = request.cookies.get("Username")
     Password = request.cookies.get("Password")
-    print(Username, Password)
     if LocalServer.CheckPassword(Password, Username):
         return render_template("Main.html")
     else:
@@ -19,7 +18,6 @@ def Main():
 def Auth():
     Username = request.cookies.get("Username")
     Password = request.cookies.get("Password")
-    print(Username, Password)
     if LocalServer.CheckPassword(Password, Username):
         return redirect("/")
     else:  
@@ -30,14 +28,10 @@ def AuthLogin():
     if request.method == "POST":
         Username = request.form['Username']
         Password = request.form['Password']
-        print(Username, Password)
-        print(LocalServer.CheckPassword(Password, Username))
         if LocalServer.CheckPassword(Password, Username):
-            print("L")
             resp = make_response(redirect("/"))
             resp.set_cookie('Username', Username)
             resp.set_cookie('Password', Password)
-            print("Success")
             return resp
         else:
             return redirect("/")
@@ -51,16 +45,12 @@ def AuthSignUp():
         Username = request.form['Username']
         Email = request.form['Email']
         Password = request.form['Password']
-        print(FName, LName, Username, Email, Password)
         if LocalServer.CreateAccount(FName, LName, Username, Email, Password):
-            print(":)")
             resp = make_response(redirect("/"))
             resp.set_cookie('Username', Username)
             resp.set_cookie("Password", Password)
-            print("Success")
             return resp
         else:
-            print("Redirecting")
             return redirect("/")
     return render_template("Auth.html", HiddenStatus="Hidden", LoginStatus="SignHidden", SignUpStatus="Show")
 
