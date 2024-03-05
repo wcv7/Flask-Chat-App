@@ -7,18 +7,16 @@ LocalServer = Handler.Data.Server()
 
 @app.route("/")
 def Main():
-    Username = request.cookies.get("Username")
-    Password = request.cookies.get("Password")
-    if LocalServer.CheckPassword(Password, Username):
-        return render_template("Main.html")
+    Secretkey = request.cookies.get("SecretKey")
+    if LocalServer.CheckKey(Secretkey):
+        return render_template("Home.html")
     else:
         return redirect("/Auth")
     
 @app.route("/Auth")
 def Auth():
-    Username = request.cookies.get("Username")
-    Password = request.cookies.get("Password")
-    if LocalServer.CheckPassword(Password, Username):
+    Secretkey = request.cookies.get("SecretKey")
+    if LocalServer.CheckKey(Secretkey):
         return redirect("/")
     else:  
         return render_template("Auth.html", HiddenStatus="Show", SignUpStatus="Hidden", LoginStatus="Hidden")
@@ -29,9 +27,9 @@ def AuthLogin():
         Username = request.form['Username']
         Password = request.form['Password']
         if LocalServer.Login(Username, Password):
+            Secretkey = LocalServer.GetKey(Username)
             resp = make_response(redirect("/"))
-            resp.set_cookie('Username', Username)
-            resp.set_cookie('Password', Password)
+            resp.set_cookie('SecretKey', Secretkey)
             return resp
         else:
             return redirect("/")
@@ -46,9 +44,9 @@ def AuthSignUp():
         Email = request.form['Email']
         Password = request.form['Password']
         if LocalServer.CreateAccount(FName, LName, Username, Email, Password):
+            Secretkey = LocalServer.GetKey(Username)
             resp = make_response(redirect("/"))
-            resp.set_cookie('Username', Username)
-            resp.set_cookie("Password", Password)
+            resp.set_cookie('SecretKey', Secretkey)
             return resp
         else:
             return redirect("/")
